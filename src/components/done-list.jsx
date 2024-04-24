@@ -5,16 +5,10 @@ export default function DoneList() {
 
     const completedTodos = todos.filter(todo => todo.completed === true);
 
-    if (completedTodos.length === 0) {
-        return (
-            <p className="text-gray-500 mt-3">No completed tasks.</p>
-        )
-    }
-
     return (
         <div className="space-y-2">
             <h2 className="text-2xl font-bold">Done and Dusted!</h2>
-            {completedTodos.map(todo => (
+            {completedTodos.length ? (completedTodos.map(todo => (
                 <div
                     key={todo.id}
                     className="flex items-center bg-white shadow-md p-3"
@@ -33,7 +27,9 @@ export default function DoneList() {
                         Delete
                     </button>
                 </div>
-            ))}
+            ))) : (
+                <p className="text-gray-500 mt-3">No completed tasks.</p>
+            )}
         </div>
     )
 
